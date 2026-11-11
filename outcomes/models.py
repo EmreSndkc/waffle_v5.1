@@ -1,7 +1,9 @@
 from decimal import Decimal
-from django.db import models, transaction
+
 from django.contrib.auth.models import AbstractUser
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db import models
+from django.db.models import Q
 
 
 # ==============================================================================
@@ -9,15 +11,22 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 # ==============================================================================
 class User(AbstractUser):
     class Role(models.TextChoices):
-        ADMIN = 'ADMIN', 'Bölüm Başkanı / Yönetici'
+        ADMIN = 'ADMIN', 'Sistem Yöneticisi'
+        DEPT_HEAD = 'DEPT_HEAD', 'Bölüm Başkanı'
         INSTRUCTOR = 'INSTRUCTOR', 'Öğretim Üyesi'
         STUDENT = 'STUDENT', 'Öğrenci'
 
     role = models.CharField(max_length=20, choices=Role.choices, default=Role.STUDENT)
     student_number = models.CharField(max_length=20, blank=True, null=True, unique=True)
 
+    class Meta(AbstractUser.Meta):
+        indexes = [
+            # "Tüm öğrenciler / tüm hocalar" listeleri
+            models.Index(fields=['role'], name='user_role_idx'),
+        ]
+
     def __str__(self):
-        return f"{self.get_full_name()} ({self.role})"
+        return f"{self.get_full_name() or self.username} ({self.role})"
 
 
 # ==============================================================================
@@ -29,14 +38,14 @@ class ProgramOutcome(models.Model):
     description = models.TextField()
 
     class Meta:
-        ordering = ['code']
+        ordering = ['id']
 
     def __str__(self):
         return f"{self.code} - {self.title}"
 
 
 # ==============================================================================
-# 3. DERS VE DERS ÇIKTILARI (COURSES & LEARNING OUTCOMES)
+# 3. DERS, KAYIT VE DERS ÇIKTILARI (COURSES, ENROLLMENT & LEARNING OUTCOMES)
 # ==============================================================================
 class Course(models.Model):
     code = models.CharField(max_length=20, unique=True)  # Örn: CSE 311
@@ -46,12 +55,49 @@ class Course(models.Model):
         User,
         on_delete=models.SET_NULL,
         null=True,
+        blank=True,
         limit_choices_to={'role': User.Role.INSTRUCTOR},
         related_name='courses'
     )
+    students = models.ManyToManyField(
+        User,
+        through='Enrollment',
+        related_name='enrolled_courses',
+        blank=True,
+    )
+
+    class Meta:
+        ordering = ['code']
 
     def __str__(self):
         return f"{self.code} - {self.title}"
+
+
+class Enrollment(models.Model):
+    """
+    Öğrenci ↔ ders kaydı. Hangi öğrencinin hangi derste olduğunu tutar;
+    not girme ekranı ve yeniden hesaplama bu tabloya göre çalışır.
+    """
+    student = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        limit_choices_to={'role': User.Role.STUDENT},
+        related_name='enrollments'
+    )
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='enrollments')
+    enrolled_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['student', 'course'], name='uniq_enrollment_student_course'),
+        ]
+        indexes = [
+            # Bir dersin öğrenci listesi (unique index öğrenci → ders yönünü karşılar)
+            models.Index(fields=['course', 'student'], name='enroll_course_student_idx'),
+        ]
+
+    def __str__(self):
+        return f"{self.student.username} @ {self.course.code}"
 
 
 class LearningOutcome(models.Model):
@@ -60,8 +106,10 @@ class LearningOutcome(models.Model):
     description = models.TextField()
 
     class Meta:
-        unique_together = ('course', 'code')
         ordering = ['course', 'code']
+        constraints = [
+            models.UniqueConstraint(fields=['course', 'code'], name='uniq_lo_course_code'),
+        ]
 
     def __str__(self):
         return f"{self.course.code} - {self.code}"
@@ -69,21 +117,23 @@ class LearningOutcome(models.Model):
 
 class LO_PO_Mapping(models.Model):
     """
-    Her dersin Learning Outcome'ı, Program Outcome'a 1-5 arası bir ağırlıkla bağlanır.
+    Her dersin Learning Outcome'ı, Program Outcome'a 1-5 arası tam sayı bir ağırlıkla bağlanır.
     """
     learning_outcome = models.ForeignKey(LearningOutcome, on_delete=models.CASCADE, related_name='po_mappings')
     program_outcome = models.ForeignKey(ProgramOutcome, on_delete=models.CASCADE, related_name='lo_mappings')
-    weight = models.DecimalField(
-        max_digits=4,
-        decimal_places=2,
-        validators=[MinValueValidator(Decimal('0.01')), MaxValueValidator(Decimal('5.00'))],
-        help_text="1.0 ile 5.0 arasında ağırlık"
+    weight = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)],
+        help_text="1 ile 5 arasında tam sayı ağırlık"
     )
 
     class Meta:
-        unique_together = ('learning_outcome', 'program_outcome')
+        constraints = [
+            models.UniqueConstraint(fields=['learning_outcome', 'program_outcome'], name='uniq_lo_po'),
+            models.CheckConstraint(check=Q(weight__gte=1) & Q(weight__lte=5), name='lo_po_weight_1_5'),
+        ]
         indexes = [
-            models.Index(fields=['learning_outcome', 'program_outcome']),
+            # PO → LO yönü: "bu PO'yu hangi LO'lar besliyor?"
+            models.Index(fields=['program_outcome', 'learning_outcome'], name='lo_po_po_lo_idx'),
         ]
 
     def __str__(self):
@@ -100,6 +150,12 @@ class Assessment(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='assessments')
     name = models.CharField(max_length=100)  # Örn: Midterm, Project
     max_score = models.DecimalField(max_digits=5, decimal_places=2, default=Decimal('100.0'))
+
+    class Meta:
+        ordering = ['course', 'id']
+        constraints = [
+            models.UniqueConstraint(fields=['course', 'name'], name='uniq_assessment_course_name'),
+        ]
 
     def __str__(self):
         return f"{self.course.code} - {self.name}"
@@ -120,7 +176,14 @@ class Assessment_LO_Mapping(models.Model):
     )
 
     class Meta:
-        unique_together = ('assessment', 'learning_outcome')
+        constraints = [
+            models.UniqueConstraint(fields=['assessment', 'learning_outcome'], name='uniq_assessment_lo'),
+            models.CheckConstraint(check=Q(weight__gt=0), name='assessment_lo_weight_positive'),
+        ]
+        indexes = [
+            # LO → değerlendirme yönü: LO puanı hesaplanırken kullanılır
+            models.Index(fields=['learning_outcome', 'assessment'], name='assess_lo_lo_assess_idx'),
+        ]
 
     def __str__(self):
         return f"{self.assessment.name} -> {self.learning_outcome.code} (w: {self.weight})"
@@ -145,9 +208,13 @@ class StudentGrade(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        unique_together = ('student', 'assessment')
+        constraints = [
+            models.UniqueConstraint(fields=['student', 'assessment'], name='uniq_grade_student_assessment'),
+            models.CheckConstraint(check=Q(score__gte=0) & Q(score__lte=100), name='grade_score_0_100'),
+        ]
         indexes = [
-            models.Index(fields=['student', 'assessment']),
+            # Bir değerlendirmenin tüm notları (not girme ekranı, sınıf ortalaması)
+            models.Index(fields=['assessment', 'student'], name='grade_assess_student_idx'),
         ]
 
     def __str__(self):
@@ -160,16 +227,20 @@ class StudentGrade(models.Model):
 class StudentPOSnapshot(models.Model):
     """
     Her istekte devasa hesaplama yapmamak için öğrencinin PO skorlarını tutan snapshot tablosu.
+    score = NULL: bu PO için henüz veri yok (0 puan değil).
     """
     student = models.ForeignKey(User, on_delete=models.CASCADE, related_name='po_snapshots')
     program_outcome = models.ForeignKey(ProgramOutcome, on_delete=models.CASCADE, related_name='student_snapshots')
-    score = models.DecimalField(max_digits=5, decimal_places=2)
+    score = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     calculated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        unique_together = ('student', 'program_outcome')
+        constraints = [
+            models.UniqueConstraint(fields=['student', 'program_outcome'], name='uniq_snapshot_student_po'),
+        ]
         indexes = [
-            models.Index(fields=['student', 'program_outcome']),
+            # PO bazlı raporlar: "PO3 ortalaması", "PO3'te eşiğin altındaki öğrenciler"
+            models.Index(fields=['program_outcome', 'score'], name='snapshot_po_score_idx'),
         ]
 
     def __str__(self):
