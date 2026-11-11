@@ -18,6 +18,7 @@ OUT = HERE / "CSE321_Waffle_5.1_Slides.pptx"
 
 NAVY, INK, MUTED, ACCENT = RGBColor(0x1D, 0x3F, 0x7A), RGBColor(0x11, 0x11, 0x11), RGBColor(0x55, 0x55, 0x55), RGBColor(0xA6, 0x1B, 0x1B)
 SW, SH = Inches(13.333), Inches(7.5)
+TEAM = "Waffle 5.1 fast (high)"
 
 prs = Presentation()
 prs.slide_width, prs.slide_height = SW, SH
@@ -43,9 +44,11 @@ def new_slide(title, owner=None):
     s = prs.slides.add_slide(BLANK)
     bar = s.shapes.add_shape(1, 0, 0, SW, Inches(0.95))
     bar.fill.solid(); bar.fill.fore_color.rgb = NAVY; bar.line.fill.background()
-    text(s, Inches(0.5), Inches(0.17), Inches(9.5), Inches(0.6), title, size=30, bold=True, color=RGBColor(255, 255, 255))
-    if owner:
-        text(s, Inches(9.8), Inches(0.28), Inches(3.1), Inches(0.5), owner, size=16, color=RGBColor(255, 255, 255), align=PP_ALIGN.RIGHT)
+    text(s, Inches(0.5), Inches(0.17), Inches(8.0), Inches(0.6), title, size=30, bold=True, color=RGBColor(255, 255, 255))
+    # Başlık slaytı yok (hoca: en fazla 6 slayt): takım adı her slaytın sağ üstünde
+    label = f"{TEAM} · {owner}" if owner else TEAM
+    if label:
+        text(s, Inches(8.3), Inches(0.28), Inches(4.6), Inches(0.5), label, size=16, color=RGBColor(255, 255, 255), align=PP_ALIGN.RIGHT)
     return s
 
 
@@ -77,37 +80,23 @@ def table(slide, x, y, w, rows, col_widths, size=18, row_h=Inches(0.5)):
     return shape
 
 
-# 1 — Özet
-s = new_slide("Waffle 5.1 — PO Yönetim Sistemi")
-text(s, Inches(0.6), Inches(1.25), Inches(12), Inches(0.9),
-     ["CSE 321 Data & System Architecture · Waffle 5.1 fast (high)",
-      "EmreSndkc · brkznqr · eminozkanca · Berkegn · github.com/EmreSndkc/waffle_v5.1"], size=18, color=MUTED)
-text(s, Inches(0.6), Inches(2.45), Inches(12), Inches(0.7),
-     "Her öğrencinin 11 Program Outcome (PO) puanını hesaplayan Django web sistemi.", size=26, bold=True)
-text(s, Inches(0.6), Inches(3.35), Inches(12), Inches(0.6), "Not  →  (yüzdelerle) Learning Outcome  →  (1–5 ağırlıkla) Program Outcome", size=24)
-text(s, Inches(0.6), Inches(4.05), Inches(12), Inches(0.7), "puan = Σ(ağırlık × puan) ÷ Σ ağırlık", size=30, bold=True, color=ACCENT, font="Menlo")
-text(s, Inches(0.6), Inches(5.1), Inches(12), Inches(2), [
-    "• Çalışıyor: veri modeli, hesaplama servisi, otomatik yeniden hesaplama, admin paneli, demo verisi",
-    "• Kabul testi: Midterm 90, Project 80  →  PO1 = 85.0, PO2 = 82.9  (15 test, SQLite ve PostgreSQL)",
-    "• Verisi olmayan PO 0 değil NULL: öğrenci haksız yere düşük görünmez"], size=20)
-
-# 2 — Roller (D)
+# 1 — Roller (D)
 s = new_slide("Roller: kim neyi girer, kim neyi görür", "Berkegn")
 picture(s, "roles.png")
 
-# 3 — Mimari (A)
+# 2 — Mimari (A)
 s = new_slide("Sistem mimarisi", "EmreSndkc")
 picture(s, "architecture.png")
 
-# 4 — ER (B)
+# 3 — ER (B)
 s = new_slide("Veri modeli: ER diyagramı", "brkznqr")
 picture(s, "er.png")
 
-# 5 — Class (C)
+# 4 — Class (C)
 s = new_slide("Class diyagramı", "eminozkanca")
 picture(s, "class.png")
 
-# 6 — Hesaplama örneği (C)
+# 5 — Hesaplama örneği (C)
 s = new_slide("Hesaplama örneği ve tutarlılık", "eminozkanca")
 text(s, Inches(0.5), Inches(1.15), Inches(12.3), Inches(0.5),
      "Midterm 90, Project 80 · Midterm→LO1 %60, Project→LO1 %40, Midterm→LO2 %40, Project→LO2 %100", size=18, color=MUTED)
@@ -125,7 +114,7 @@ text(s, Inches(0.5), Inches(5.1), Inches(12.3), Inches(2.2), [
     "• Değişiklik + hesaplama tek transaction (transaction.atomic); öğrenci satırı select_for_update ile kilitlenir",
     "• PostgreSQL READ COMMITTED: kilit, eşzamanlı iki hesaplamanın birbirini ezmesini önler"], size=19)
 
-# 7 — Sonraki adımlar
+# 6 — Sonraki adımlar
 s = new_slide("Sonraki adımlar")
 table(s, Inches(0.5), Inches(1.3), Inches(12.3), [
     ["Sprint", "İş", "Neden"],
