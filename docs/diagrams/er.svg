@@ -1,58 +1,57 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1560 1250" font-family="Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 60 1650 1190" font-family="Helvetica, Arial, sans-serif">
 <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0L10 5L0 10z" fill="#333"/></marker></defs>
-<rect width="1560" height="1250" fill="#fff"/>
-<text x="780" y="42" text-anchor="middle" font-size="28" font-weight="bold" fill="#111">Waffle 5.1 — ER Diyagramı</text>
-<polyline points="600,150 490,150" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
-<polyline points="1110,150 1000,150" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+<rect width="1650" height="1250" fill="#fff"/>
+<polyline points="630,150 520,150" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+<polyline points="1170,150 1060,150" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
 <polyline points="290,360 290,298" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
-<polyline points="490,440 545,440 545,250 600,250" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
-<polyline points="800,360 800,270" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
-<polyline points="1310,360 1310,270" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
-<polyline points="1310,578 1310,640" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
-<polyline points="800,640 800,550" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
-<polyline points="1000,720 1055,720 1055,230 1110,230" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+<polyline points="520,440 575,440 575,250 630,250" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+<polyline points="830,360 830,270" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+<polyline points="1370,360 1370,270" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+<polyline points="1370,578 1370,640" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+<polyline points="830,640 830,550" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+<polyline points="1060,720 1115,720 1115,230 1170,230" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
 <polyline points="90,720 55,720 55,200 90,200" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
-<polyline points="490,720 545,720 545,480 600,480" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+<polyline points="520,720 575,720 575,480 630,480" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
 <polyline points="90,1050 25,1050 25,160 90,160" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
-<polyline points="490,1050 1310,1050 1310,802" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
-<rect x="90" y="80" width="400" height="218" rx="6" fill="#f6f9ff" stroke="#1d3f7a" stroke-width="2"/>
-<path d="M90 122V86a6 6 0 0 1 6-6H484a6 6 0 0 1 6 6V122z" fill="#1d3f7a"/>
-<text x="290.0" y="108" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">User</text>
+<polyline points="520,1050 1370,1050 1370,802" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+<rect x="90" y="80" width="430" height="218" rx="6" fill="#f6f9ff" stroke="#1d3f7a" stroke-width="2"/>
+<path d="M90 122V86a6 6 0 0 1 6-6H514a6 6 0 0 1 6 6V122z" fill="#1d3f7a"/>
+<text x="305.0" y="108" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">User</text>
 <text x="100" y="144" font-size="15" font-weight="bold" fill="#a61b1b">PK</text>
 <text x="136" y="144" font-size="15.5" fill="#111">id</text>
 <text x="100" y="172" font-size="15" font-weight="bold" fill="#6b3fa0">UQ</text>
 <text x="136" y="172" font-size="15.5" fill="#111">username</text>
-<text x="136" y="200" font-size="15.5" fill="#111">role  (ADMIN, DEPT_HEAD, INSTRUCTOR, STUDENT)</text>
+<text x="136" y="200" font-size="15.5" fill="#111">role  (4 değer: ADMIN … STUDENT)</text>
 <text x="100" y="228" font-size="15" font-weight="bold" fill="#6b3fa0">UQ</text>
 <text x="136" y="228" font-size="15.5" fill="#111">student_number  (NULL olabilir)</text>
 <text x="136" y="256" font-size="15.5" fill="#111">first_name, last_name, email, password</text>
 <text x="100" y="284" font-size="15" font-weight="bold" fill="#555">IX</text>
 <text x="136" y="284" font-size="15.5" fill="#111">(role)</text>
-<rect x="600" y="80" width="400" height="190" rx="6" fill="#f6f9ff" stroke="#1d3f7a" stroke-width="2"/>
-<path d="M600 122V86a6 6 0 0 1 6-6H994a6 6 0 0 1 6 6V122z" fill="#1d3f7a"/>
-<text x="800.0" y="108" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">Course</text>
-<text x="610" y="144" font-size="15" font-weight="bold" fill="#a61b1b">PK</text>
-<text x="646" y="144" font-size="15.5" fill="#111">id</text>
-<text x="610" y="172" font-size="15" font-weight="bold" fill="#6b3fa0">UQ</text>
-<text x="646" y="172" font-size="15.5" fill="#111">code</text>
-<text x="646" y="200" font-size="15.5" fill="#111">title</text>
-<text x="646" y="228" font-size="15.5" fill="#111">term</text>
-<text x="610" y="256" font-size="15" font-weight="bold" fill="#1d5a2b">FK</text>
-<text x="646" y="256" font-size="15.5" fill="#111">instructor_id → User  (NULL olabilir)</text>
-<rect x="1110" y="80" width="400" height="190" rx="6" fill="#f6f9ff" stroke="#1d3f7a" stroke-width="2"/>
-<path d="M1110 122V86a6 6 0 0 1 6-6H1504a6 6 0 0 1 6 6V122z" fill="#1d3f7a"/>
-<text x="1310.0" y="108" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">LearningOutcome</text>
-<text x="1120" y="144" font-size="15" font-weight="bold" fill="#a61b1b">PK</text>
-<text x="1156" y="144" font-size="15.5" fill="#111">id</text>
-<text x="1120" y="172" font-size="15" font-weight="bold" fill="#1d5a2b">FK</text>
-<text x="1156" y="172" font-size="15.5" fill="#111">course_id → Course</text>
-<text x="1156" y="200" font-size="15.5" fill="#111">code</text>
-<text x="1156" y="228" font-size="15.5" fill="#111">description</text>
-<text x="1120" y="256" font-size="15" font-weight="bold" fill="#6b3fa0">UQ</text>
-<text x="1156" y="256" font-size="15.5" fill="#111">(course_id, code)</text>
-<rect x="90" y="360" width="400" height="218" rx="6" fill="#f6f9ff" stroke="#1d3f7a" stroke-width="2"/>
-<path d="M90 402V366a6 6 0 0 1 6-6H484a6 6 0 0 1 6 6V402z" fill="#1d3f7a"/>
-<text x="290.0" y="388" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">Enrollment</text>
+<rect x="630" y="80" width="430" height="190" rx="6" fill="#f6f9ff" stroke="#1d3f7a" stroke-width="2"/>
+<path d="M630 122V86a6 6 0 0 1 6-6H1054a6 6 0 0 1 6 6V122z" fill="#1d3f7a"/>
+<text x="845.0" y="108" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">Course</text>
+<text x="640" y="144" font-size="15" font-weight="bold" fill="#a61b1b">PK</text>
+<text x="676" y="144" font-size="15.5" fill="#111">id</text>
+<text x="640" y="172" font-size="15" font-weight="bold" fill="#6b3fa0">UQ</text>
+<text x="676" y="172" font-size="15.5" fill="#111">code</text>
+<text x="676" y="200" font-size="15.5" fill="#111">title</text>
+<text x="676" y="228" font-size="15.5" fill="#111">term</text>
+<text x="640" y="256" font-size="15" font-weight="bold" fill="#1d5a2b">FK</text>
+<text x="676" y="256" font-size="15.5" fill="#111">instructor_id → User  (NULL olabilir)</text>
+<rect x="1170" y="80" width="430" height="190" rx="6" fill="#f6f9ff" stroke="#1d3f7a" stroke-width="2"/>
+<path d="M1170 122V86a6 6 0 0 1 6-6H1594a6 6 0 0 1 6 6V122z" fill="#1d3f7a"/>
+<text x="1385.0" y="108" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">LearningOutcome</text>
+<text x="1180" y="144" font-size="15" font-weight="bold" fill="#a61b1b">PK</text>
+<text x="1216" y="144" font-size="15.5" fill="#111">id</text>
+<text x="1180" y="172" font-size="15" font-weight="bold" fill="#1d5a2b">FK</text>
+<text x="1216" y="172" font-size="15.5" fill="#111">course_id → Course</text>
+<text x="1216" y="200" font-size="15.5" fill="#111">code</text>
+<text x="1216" y="228" font-size="15.5" fill="#111">description</text>
+<text x="1180" y="256" font-size="15" font-weight="bold" fill="#6b3fa0">UQ</text>
+<text x="1216" y="256" font-size="15.5" fill="#111">(course_id, code)</text>
+<rect x="90" y="360" width="430" height="218" rx="6" fill="#f6f9ff" stroke="#1d3f7a" stroke-width="2"/>
+<path d="M90 402V366a6 6 0 0 1 6-6H514a6 6 0 0 1 6 6V402z" fill="#1d3f7a"/>
+<text x="305.0" y="388" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">Enrollment</text>
 <text x="100" y="424" font-size="15" font-weight="bold" fill="#a61b1b">PK</text>
 <text x="136" y="424" font-size="15.5" fill="#111">id</text>
 <text x="100" y="452" font-size="15" font-weight="bold" fill="#1d5a2b">FK</text>
@@ -64,34 +63,34 @@
 <text x="136" y="536" font-size="15.5" fill="#111">(student_id, course_id)</text>
 <text x="100" y="564" font-size="15" font-weight="bold" fill="#555">IX</text>
 <text x="136" y="564" font-size="15.5" fill="#111">(course_id, student_id)</text>
-<rect x="600" y="360" width="400" height="190" rx="6" fill="#f6f9ff" stroke="#1d3f7a" stroke-width="2"/>
-<path d="M600 402V366a6 6 0 0 1 6-6H994a6 6 0 0 1 6 6V402z" fill="#1d3f7a"/>
-<text x="800.0" y="388" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">Assessment</text>
-<text x="610" y="424" font-size="15" font-weight="bold" fill="#a61b1b">PK</text>
-<text x="646" y="424" font-size="15.5" fill="#111">id</text>
-<text x="610" y="452" font-size="15" font-weight="bold" fill="#1d5a2b">FK</text>
-<text x="646" y="452" font-size="15.5" fill="#111">course_id → Course</text>
-<text x="646" y="480" font-size="15.5" fill="#111">name</text>
-<text x="646" y="508" font-size="15.5" fill="#111">max_score</text>
-<text x="610" y="536" font-size="15" font-weight="bold" fill="#6b3fa0">UQ</text>
-<text x="646" y="536" font-size="15.5" fill="#111">(course_id, name)</text>
-<rect x="1110" y="360" width="400" height="218" rx="6" fill="#f6f9ff" stroke="#1d3f7a" stroke-width="2"/>
-<path d="M1110 402V366a6 6 0 0 1 6-6H1504a6 6 0 0 1 6 6V402z" fill="#1d3f7a"/>
-<text x="1310.0" y="388" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">LO_PO_Mapping</text>
-<text x="1120" y="424" font-size="15" font-weight="bold" fill="#a61b1b">PK</text>
-<text x="1156" y="424" font-size="15.5" fill="#111">id</text>
-<text x="1120" y="452" font-size="15" font-weight="bold" fill="#1d5a2b">FK</text>
-<text x="1156" y="452" font-size="15.5" fill="#111">learning_outcome_id → LearningOutcome</text>
-<text x="1120" y="480" font-size="15" font-weight="bold" fill="#1d5a2b">FK</text>
-<text x="1156" y="480" font-size="15.5" fill="#111">program_outcome_id → ProgramOutcome</text>
-<text x="1156" y="508" font-size="15.5" fill="#111">weight  smallint, CHECK 1–5</text>
-<text x="1120" y="536" font-size="15" font-weight="bold" fill="#6b3fa0">UQ</text>
-<text x="1156" y="536" font-size="15.5" fill="#111">(learning_outcome_id, program_outcome_id)</text>
-<text x="1120" y="564" font-size="15" font-weight="bold" fill="#555">IX</text>
-<text x="1156" y="564" font-size="15.5" fill="#111">(program_outcome_id, learning_outcome_id)</text>
-<rect x="90" y="640" width="400" height="246" rx="6" fill="#f6f9ff" stroke="#1d3f7a" stroke-width="2"/>
-<path d="M90 682V646a6 6 0 0 1 6-6H484a6 6 0 0 1 6 6V682z" fill="#1d3f7a"/>
-<text x="290.0" y="668" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">StudentGrade</text>
+<rect x="630" y="360" width="430" height="190" rx="6" fill="#f6f9ff" stroke="#1d3f7a" stroke-width="2"/>
+<path d="M630 402V366a6 6 0 0 1 6-6H1054a6 6 0 0 1 6 6V402z" fill="#1d3f7a"/>
+<text x="845.0" y="388" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">Assessment</text>
+<text x="640" y="424" font-size="15" font-weight="bold" fill="#a61b1b">PK</text>
+<text x="676" y="424" font-size="15.5" fill="#111">id</text>
+<text x="640" y="452" font-size="15" font-weight="bold" fill="#1d5a2b">FK</text>
+<text x="676" y="452" font-size="15.5" fill="#111">course_id → Course</text>
+<text x="676" y="480" font-size="15.5" fill="#111">name</text>
+<text x="676" y="508" font-size="15.5" fill="#111">max_score</text>
+<text x="640" y="536" font-size="15" font-weight="bold" fill="#6b3fa0">UQ</text>
+<text x="676" y="536" font-size="15.5" fill="#111">(course_id, name)</text>
+<rect x="1170" y="360" width="430" height="218" rx="6" fill="#f6f9ff" stroke="#1d3f7a" stroke-width="2"/>
+<path d="M1170 402V366a6 6 0 0 1 6-6H1594a6 6 0 0 1 6 6V402z" fill="#1d3f7a"/>
+<text x="1385.0" y="388" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">LO_PO_Mapping</text>
+<text x="1180" y="424" font-size="15" font-weight="bold" fill="#a61b1b">PK</text>
+<text x="1216" y="424" font-size="15.5" fill="#111">id</text>
+<text x="1180" y="452" font-size="15" font-weight="bold" fill="#1d5a2b">FK</text>
+<text x="1216" y="452" font-size="15.5" fill="#111">learning_outcome_id → LearningOutcome</text>
+<text x="1180" y="480" font-size="15" font-weight="bold" fill="#1d5a2b">FK</text>
+<text x="1216" y="480" font-size="15.5" fill="#111">program_outcome_id → ProgramOutcome</text>
+<text x="1216" y="508" font-size="15.5" fill="#111">weight  smallint, CHECK 1–5</text>
+<text x="1180" y="536" font-size="15" font-weight="bold" fill="#6b3fa0">UQ</text>
+<text x="1216" y="536" font-size="15.5" fill="#111">(learning_outcome_id, program_outcome_id)</text>
+<text x="1180" y="564" font-size="15" font-weight="bold" fill="#555">IX</text>
+<text x="1216" y="564" font-size="15.5" fill="#111">(program_outcome_id, learning_outcome_id)</text>
+<rect x="90" y="640" width="430" height="246" rx="6" fill="#f6f9ff" stroke="#1d3f7a" stroke-width="2"/>
+<path d="M90 682V646a6 6 0 0 1 6-6H514a6 6 0 0 1 6 6V682z" fill="#1d3f7a"/>
+<text x="305.0" y="668" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">StudentGrade</text>
 <text x="100" y="704" font-size="15" font-weight="bold" fill="#a61b1b">PK</text>
 <text x="136" y="704" font-size="15.5" fill="#111">id</text>
 <text x="100" y="732" font-size="15" font-weight="bold" fill="#1d5a2b">FK</text>
@@ -104,32 +103,32 @@
 <text x="136" y="844" font-size="15.5" fill="#111">(student_id, assessment_id)</text>
 <text x="100" y="872" font-size="15" font-weight="bold" fill="#555">IX</text>
 <text x="136" y="872" font-size="15.5" fill="#111">(assessment_id, student_id)</text>
-<rect x="600" y="640" width="400" height="218" rx="6" fill="#f6f9ff" stroke="#1d3f7a" stroke-width="2"/>
-<path d="M600 682V646a6 6 0 0 1 6-6H994a6 6 0 0 1 6 6V682z" fill="#1d3f7a"/>
-<text x="800.0" y="668" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">Assessment_LO_Mapping</text>
-<text x="610" y="704" font-size="15" font-weight="bold" fill="#a61b1b">PK</text>
-<text x="646" y="704" font-size="15.5" fill="#111">id</text>
-<text x="610" y="732" font-size="15" font-weight="bold" fill="#1d5a2b">FK</text>
-<text x="646" y="732" font-size="15.5" fill="#111">assessment_id → Assessment</text>
-<text x="610" y="760" font-size="15" font-weight="bold" fill="#1d5a2b">FK</text>
-<text x="646" y="760" font-size="15.5" fill="#111">learning_outcome_id → LearningOutcome</text>
-<text x="646" y="788" font-size="15.5" fill="#111">weight  decimal(5,2), CHECK > 0</text>
-<text x="610" y="816" font-size="15" font-weight="bold" fill="#6b3fa0">UQ</text>
-<text x="646" y="816" font-size="15.5" fill="#111">(assessment_id, learning_outcome_id)</text>
-<text x="610" y="844" font-size="15" font-weight="bold" fill="#555">IX</text>
-<text x="646" y="844" font-size="15.5" fill="#111">(learning_outcome_id, assessment_id)</text>
-<rect x="1110" y="640" width="400" height="162" rx="6" fill="#f6f9ff" stroke="#1d3f7a" stroke-width="2"/>
-<path d="M1110 682V646a6 6 0 0 1 6-6H1504a6 6 0 0 1 6 6V682z" fill="#1d3f7a"/>
-<text x="1310.0" y="668" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">ProgramOutcome</text>
-<text x="1120" y="704" font-size="15" font-weight="bold" fill="#a61b1b">PK</text>
-<text x="1156" y="704" font-size="15.5" fill="#111">id</text>
-<text x="1120" y="732" font-size="15" font-weight="bold" fill="#6b3fa0">UQ</text>
-<text x="1156" y="732" font-size="15.5" fill="#111">code  (PO1 … PO11)</text>
-<text x="1156" y="760" font-size="15.5" fill="#111">title</text>
-<text x="1156" y="788" font-size="15.5" fill="#111">description</text>
-<rect x="90" y="950" width="400" height="246" rx="6" fill="#fff5e6" stroke="#7a4a00" stroke-width="2"/>
-<path d="M90 992V956a6 6 0 0 1 6-6H484a6 6 0 0 1 6 6V992z" fill="#7a4a00"/>
-<text x="290.0" y="978" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">StudentPOSnapshot</text>
+<rect x="630" y="640" width="430" height="218" rx="6" fill="#f6f9ff" stroke="#1d3f7a" stroke-width="2"/>
+<path d="M630 682V646a6 6 0 0 1 6-6H1054a6 6 0 0 1 6 6V682z" fill="#1d3f7a"/>
+<text x="845.0" y="668" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">Assessment_LO_Mapping</text>
+<text x="640" y="704" font-size="15" font-weight="bold" fill="#a61b1b">PK</text>
+<text x="676" y="704" font-size="15.5" fill="#111">id</text>
+<text x="640" y="732" font-size="15" font-weight="bold" fill="#1d5a2b">FK</text>
+<text x="676" y="732" font-size="15.5" fill="#111">assessment_id → Assessment</text>
+<text x="640" y="760" font-size="15" font-weight="bold" fill="#1d5a2b">FK</text>
+<text x="676" y="760" font-size="15.5" fill="#111">learning_outcome_id → LearningOutcome</text>
+<text x="676" y="788" font-size="15.5" fill="#111">weight  decimal(5,2), CHECK > 0</text>
+<text x="640" y="816" font-size="15" font-weight="bold" fill="#6b3fa0">UQ</text>
+<text x="676" y="816" font-size="15.5" fill="#111">(assessment_id, learning_outcome_id)</text>
+<text x="640" y="844" font-size="15" font-weight="bold" fill="#555">IX</text>
+<text x="676" y="844" font-size="15.5" fill="#111">(learning_outcome_id, assessment_id)</text>
+<rect x="1170" y="640" width="430" height="162" rx="6" fill="#f6f9ff" stroke="#1d3f7a" stroke-width="2"/>
+<path d="M1170 682V646a6 6 0 0 1 6-6H1594a6 6 0 0 1 6 6V682z" fill="#1d3f7a"/>
+<text x="1385.0" y="668" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">ProgramOutcome</text>
+<text x="1180" y="704" font-size="15" font-weight="bold" fill="#a61b1b">PK</text>
+<text x="1216" y="704" font-size="15.5" fill="#111">id</text>
+<text x="1180" y="732" font-size="15" font-weight="bold" fill="#6b3fa0">UQ</text>
+<text x="1216" y="732" font-size="15.5" fill="#111">code  (PO1 … PO11)</text>
+<text x="1216" y="760" font-size="15.5" fill="#111">title</text>
+<text x="1216" y="788" font-size="15.5" fill="#111">description</text>
+<rect x="90" y="950" width="430" height="246" rx="6" fill="#fff5e6" stroke="#7a4a00" stroke-width="2"/>
+<path d="M90 992V956a6 6 0 0 1 6-6H514a6 6 0 0 1 6 6V992z" fill="#7a4a00"/>
+<text x="305.0" y="978" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">StudentPOSnapshot</text>
 <text x="100" y="1014" font-size="15" font-weight="bold" fill="#a61b1b">PK</text>
 <text x="136" y="1014" font-size="15.5" fill="#111">id</text>
 <text x="100" y="1042" font-size="15" font-weight="bold" fill="#1d5a2b">FK</text>
@@ -142,7 +141,7 @@
 <text x="136" y="1154" font-size="15.5" fill="#111">(student_id, program_outcome_id)</text>
 <text x="100" y="1182" font-size="15" font-weight="bold" fill="#555">IX</text>
 <text x="136" y="1182" font-size="15.5" fill="#111">(program_outcome_id, score)</text>
-<rect x="600" y="1120" width="910" height="80" rx="6" fill="#fafafa" stroke="#999" stroke-width="1.5"/>
-<text x="616" y="1150" font-size="17" fill="#111"><tspan font-weight="bold" fill="#a61b1b">PK</tspan> birincil anahtar   <tspan font-weight="bold" fill="#1d5a2b">FK</tspan> yabancı anahtar   <tspan font-weight="bold" fill="#6b3fa0">UQ</tspan> unique kısıt   <tspan font-weight="bold" fill="#555">IX</tspan> ek bileşik index</text>
-<text x="616" y="1180" font-size="17" fill="#111">Ok: FK tablosu → başvurulan tablo (N → 1).  Turuncu tablo: ön hesaplanmış PO profili.</text>
+<rect x="630" y="1120" width="970" height="80" rx="6" fill="#fafafa" stroke="#999" stroke-width="1.5"/>
+<text x="646" y="1150" font-size="17" fill="#111"><tspan font-weight="bold" fill="#a61b1b">PK</tspan> birincil anahtar   <tspan font-weight="bold" fill="#1d5a2b">FK</tspan> yabancı anahtar   <tspan font-weight="bold" fill="#6b3fa0">UQ</tspan> unique kısıt   <tspan font-weight="bold" fill="#555">IX</tspan> ek bileşik index</text>
+<text x="646" y="1180" font-size="17" fill="#111">Ok: FK tablosu → başvurulan tablo (N → 1).  Turuncu tablo: ön hesaplanmış PO profili.</text>
 </svg>
