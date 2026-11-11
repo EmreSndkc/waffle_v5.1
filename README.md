@@ -67,6 +67,25 @@ python manage.py migrate
 | `MEDIA_ROOT` | `./media` | Yüklenen Excel/CSV ve syllabus PDF dosyaları |
 | `DJANGO_SECRET_KEY`, `DJANGO_DEBUG`, `DJANGO_ALLOWED_HOSTS` | Geliştirme varsayılanları | Güvenlik |
 
+## Demo verisi
+
+```bash
+python manage.py seed_demo
+```
+
+11 PO, üç ders (CSE 311, CSE 321, MAT 241), LO'lar, değerlendirmeler, eşlemeler ve her rol için demo kullanıcı yükler. Komut tekrar çalıştırılabilir; kopya kayıt üretmez.
+
+| Rol | Kullanıcı adı | Admin paneline girer mi |
+|---|---|---|
+| Sistem Yöneticisi | `admin` | Evet (tam yetki) |
+| Bölüm Başkanı | `baskan` | Evet (PO, ders, kayıt) |
+| Öğretim Üyesi | `hoca.yazilim`, `hoca.veri`, `hoca.mat` | Evet (LO, değerlendirme, eşleme, not) |
+| Öğrenci | `elif`, `can`, `zeynep`, `mert`, `selin`, `emir` | Hayır |
+
+Parola: `outcomes/management/commands/seed_demo.py` içindeki `DEMO_PASSWORD` (ya da `--password` ile verdiğiniz değer).
+
+`elif` hocanın örneğindeki öğrencidir (Midterm 90, Project 80): PO1 = 84.95 ≈ 85.0, PO2 = 82.86 ≈ 82.9, diğer PO'lar NULL (veri yok).
+
 ## Testler
 
 ```bash
