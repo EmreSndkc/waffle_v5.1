@@ -4,8 +4,8 @@ from pathlib import Path
 W, RH, HH = 430, 28, 42
 C1, C2, C3 = 90, 630, 1170
 T = {
-    "User": (C1, 80, ["PK  id", "UQ  username", "    role  (4 değer: ADMIN … STUDENT)", "UQ  student_number  (NULL olabilir)", "    first_name, last_name, email, password", "IX  (role)"]),
-    "Course": (C2, 80, ["PK  id", "UQ  code", "    title", "    term", "FK  instructor_id → User  (NULL olabilir)"]),
+    "User": (C1, 80, ["PK  id", "UQ  username", "    role  (4 values: ADMIN … STUDENT)", "UQ  student_number  (nullable)", "    first_name, last_name, email, password", "IX  (role)"]),
+    "Course": (C2, 80, ["PK  id", "UQ  code", "    title", "    term", "FK  instructor_id → User  (nullable)"]),
     "LearningOutcome": (C3, 80, ["PK  id", "FK  course_id → Course", "    code", "    description", "UQ  (course_id, code)"]),
     "Enrollment": (C1, 360, ["PK  id", "FK  student_id → User", "FK  course_id → Course", "    enrolled_at", "UQ  (student_id, course_id)", "IX  (course_id, student_id)"]),
     "Assessment": (C2, 360, ["PK  id", "FK  course_id → Course", "    name", "    max_score", "UQ  (course_id, name)"]),
@@ -13,7 +13,7 @@ T = {
     "StudentGrade": (C1, 640, ["PK  id", "FK  student_id → User", "FK  assessment_id → Assessment", "    score  decimal(5,2), CHECK 0–100", "    updated_at", "UQ  (student_id, assessment_id)", "IX  (assessment_id, student_id)"]),
     "Assessment_LO_Mapping": (C2, 640, ["PK  id", "FK  assessment_id → Assessment", "FK  learning_outcome_id → LearningOutcome", "    weight  decimal(5,2), CHECK > 0", "UQ  (assessment_id, learning_outcome_id)", "IX  (learning_outcome_id, assessment_id)"]),
     "ProgramOutcome": (C3, 640, ["PK  id", "UQ  code  (PO1 … PO11)", "    title", "    description"]),
-    "StudentPOSnapshot": (C1, 950, ["PK  id", "FK  student_id → User", "FK  program_outcome_id → ProgramOutcome", "    score  decimal(5,2), NULL = veri yok", "    calculated_at", "UQ  (student_id, program_outcome_id)", "IX  (program_outcome_id, score)"]),
+    "StudentPOSnapshot": (C1, 950, ["PK  id", "FK  student_id → User", "FK  program_outcome_id → ProgramOutcome", "    score  decimal(5,2), NULL = no data", "    calculated_at", "UQ  (student_id, program_outcome_id)", "IX  (program_outcome_id, score)"]),
 }
 
 
@@ -63,7 +63,7 @@ for name, (x, y, rows) in T.items():
         o.append(f'<text x="{x+46}" y="{ty}" font-size="15.5" fill="#111">{rest}</text>')
 lx, ly = 630, 1120
 o.append(f'<rect x="{lx}" y="{ly}" width="970" height="80" rx="6" fill="#fafafa" stroke="#999" stroke-width="1.5"/>')
-o.append(f'<text x="{lx+16}" y="{ly+30}" font-size="17" fill="#111"><tspan font-weight="bold" fill="#a61b1b">PK</tspan> birincil anahtar   <tspan font-weight="bold" fill="#1d5a2b">FK</tspan> yabancı anahtar   <tspan font-weight="bold" fill="#6b3fa0">UQ</tspan> unique kısıt   <tspan font-weight="bold" fill="#555">IX</tspan> ek bileşik index</text>')
-o.append(f'<text x="{lx+16}" y="{ly+60}" font-size="17" fill="#111">Ok: FK tablosu → başvurulan tablo (N → 1).  Turuncu tablo: ön hesaplanmış PO profili.</text>')
+o.append(f'<text x="{lx+16}" y="{ly+30}" font-size="17" fill="#111"><tspan font-weight="bold" fill="#a61b1b">PK</tspan> primary key   <tspan font-weight="bold" fill="#1d5a2b">FK</tspan> foreign key   <tspan font-weight="bold" fill="#6b3fa0">UQ</tspan> unique constraint   <tspan font-weight="bold" fill="#555">IX</tspan> extra composite index</text>')
+o.append(f'<text x="{lx+16}" y="{ly+60}" font-size="17" fill="#111">Arrow: FK table → referenced table (N → 1).  Orange table: precomputed PO profile.</text>')
 o.append("</svg>")
 Path(__file__).with_name("er.svg").write_text("\n".join(o), encoding="utf-8")

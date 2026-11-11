@@ -80,53 +80,53 @@ def table(slide, x, y, w, rows, col_widths, size=18, row_h=Inches(0.5)):
     return shape
 
 
-# 1 — Roller (D)
-s = new_slide("Roller: kim neyi girer, kim neyi görür", "Berkegn")
+# 1 — Roles (D)
+s = new_slide("Roles: who enters what, who sees what", "Berkegn")
 picture(s, "roles.png")
 
-# 2 — Mimari (A)
-s = new_slide("Sistem mimarisi", "EmreSndkc")
+# 2 — Architecture (A)
+s = new_slide("System architecture", "EmreSndkc")
 picture(s, "architecture.png")
 
 # 3 — ER (B)
-s = new_slide("Veri modeli: ER diyagramı", "brkznqr")
+s = new_slide("Data model: ER diagram", "brkznqr")
 picture(s, "er.png")
 
 # 4 — Class (C)
-s = new_slide("Class diyagramı", "eminozkanca")
+s = new_slide("Class diagram", "eminozkanca")
 picture(s, "class.png")
 
-# 5 — Hesaplama örneği (C)
-s = new_slide("Hesaplama örneği ve tutarlılık", "eminozkanca")
+# 5 — Worked example (C)
+s = new_slide("Worked example and consistency", "eminozkanca")
 text(s, Inches(0.5), Inches(1.15), Inches(12.3), Inches(0.5),
-     "Midterm 90, Project 80 · Midterm→LO1 %60, Project→LO1 %40, Midterm→LO2 %40, Project→LO2 %100", size=18, color=MUTED)
+     "Midterm 90, Project 80 · Midterm→LO1 60%, Project→LO1 40%, Midterm→LO2 40%, Project→LO2 100%", size=18, color=MUTED)
 table(s, Inches(0.5), Inches(1.75), Inches(12.3), [
-    ["Adım", "Hesap", "Sonuç"],
+    ["Step", "Calculation", "Result"],
     ["LO1", "(0.60 × 90 + 0.40 × 80) ÷ (0.60 + 0.40)", "86.0"],
     ["LO2", "(0.40 × 90 + 1.00 × 80) ÷ (0.40 + 1.00)", "82.9"],
     ["PO1", "(2 × 86.0 + 1 × 82.86) ÷ (2 + 1)", "85.0"],
     ["PO2", "(2 × 82.86) ÷ 2", "82.9"],
-    ["PO3", "bağlı LO yok", "NULL (veri yok)"],
+    ["PO3", "no linked LO", "NULL (no data)"],
 ], [0.12, 0.63, 0.25], size=20, row_h=Inches(0.52))
 text(s, Inches(0.5), Inches(5.1), Inches(12.3), Inches(2.2), [
-    "• LO→PO ağırlığı 1–5 tam sayı: örnekteki 1.0 : 0.5 : 1.0 oranı 2 : 1 : 2 olarak girilir, sonuç aynı",
-    "• Not, eşleme ya da ağırlık değişince yalnızca etkilenen öğrenciler yeniden hesaplanır (signals)",
-    "• Değişiklik + hesaplama tek transaction (transaction.atomic); öğrenci satırı select_for_update ile kilitlenir",
-    "• PostgreSQL READ COMMITTED: kilit, eşzamanlı iki hesaplamanın birbirini ezmesini önler"], size=19)
+    "• LO→PO weight is an integer 1–5: the example's 1.0 : 0.5 : 1.0 ratio is entered as 2 : 1 : 2, same result",
+    "• When a grade, mapping or weight changes, only the affected students are recalculated (signals)",
+    "• Change + recalculation run in one transaction (transaction.atomic); the student row is locked with select_for_update",
+    "• PostgreSQL READ COMMITTED: the lock keeps two concurrent recalculations from overwriting each other"], size=19)
 
-# 6 — Sonraki adımlar
-s = new_slide("Sonraki adımlar")
+# 6 — Next steps
+s = new_slide("Next steps")
 table(s, Inches(0.5), Inches(1.3), Inches(12.3), [
-    ["Sprint", "İş", "Neden"],
-    ["S1", "Giriş + rol bazlı yönlendirme, sahiplik kontrolü, CI (GitHub Actions)", "Hoca yalnızca kendi dersini, öğrenci yalnızca kendini görsün"],
-    ["S2", "Ders/LO/değerlendirme kurulum ve not girme ekranları", "Admin paneli yerine role özel ekranlar"],
-    ["S3", "Öğrenci PO paneli, Excel/CSV toplu not yükleme", "60 kişilik sınıf tek dosyada"],
-    ["S4–S5", "Bölüm başkanı ısı haritası, PDF rapor, e-posta uyarısı", "Redis cache ve SMTP burada devreye girer"],
-    ["S6", "Gerçekçi hacimle ölçüm (500 öğrenci, 40 ders)", "Tablo boyutları ve index etkisi final raporunda"],
+    ["Sprint", "Work", "Why"],
+    ["S1", "Login + role-based redirect, ownership checks, CI (GitHub Actions)", "Instructors see only their own courses, students only themselves"],
+    ["S2", "Course/LO/assessment setup and grade entry screens", "Role-specific screens instead of the admin panel"],
+    ["S3", "Student PO dashboard, bulk grade upload (Excel/CSV)", "A class of 60 in a single file"],
+    ["S4–S5", "Department-head heat map, PDF report, e-mail alerts", "Redis cache and SMTP come into use here"],
+    ["S6", "Measurements at realistic volume (500 students, 40 courses)", "Table sizes and index impact for the final report"],
 ], [0.1, 0.5, 0.4], size=17, row_h=Inches(0.72))
 text(s, Inches(0.5), Inches(6.0), Inches(12.3), Inches(1.2), [
-    "Açık konular: Assessment.max_score hesaba katılmıyor · resmi 11 PO metni doğrulanacak · eşzamanlılık testi yazılacak"],
+    "Open items: Assessment.max_score is not used in the calculation · official text of the 11 POs to be verified · concurrency test to be written"],
      size=18, color=ACCENT)
 
 prs.save(OUT)
-print("Yazıldı:", OUT.name, f"({len(prs.slides)} slayt)")
+print("Written:", OUT.name, f"({len(prs.slides)} slides)")

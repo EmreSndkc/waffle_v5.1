@@ -41,11 +41,11 @@
 <text x="298" y="1074" font-size="16" font-weight="bold" text-anchor="middle" fill="#a61b1b">*</text>
 <text x="1626" y="694" font-size="16" font-weight="bold" text-anchor="middle" fill="#a61b1b">1</text>
 <polyline points="1170,990 1060,990" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#a)"/>
-<text x="1115.0" y="982.0" font-size="15" font-style="italic" text-anchor="middle" fill="#111">«çağırır»</text>
+<text x="1115.0" y="982.0" font-size="15" font-style="italic" text-anchor="middle" fill="#111">«calls»</text>
 <polyline points="630,990 520,990" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#a)"/>
-<text x="575.0" y="982.0" font-size="15" font-style="italic" text-anchor="middle" fill="#111">«yazar»</text>
+<text x="575.0" y="982.0" font-size="15" font-style="italic" text-anchor="middle" fill="#111">«writes»</text>
 <polyline points="830,900 830,733" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#a)"/>
-<text x="838.0" y="821.5" font-size="15" font-style="italic" fill="#111">«okur»</text>
+<text x="838.0" y="821.5" font-size="15" font-style="italic" fill="#111">«reads»</text>
 <rect x="90" y="80" width="430" height="147" fill="#f6f9ff" stroke="#1d3f7a" stroke-width="2"/>
 <rect x="90" y="80" width="430" height="58" fill="#1d3f7a"/>
 <text x="305.0" y="100" text-anchor="middle" font-size="14" font-style="italic" fill="#fff">«AbstractUser»</text>
@@ -104,7 +104,7 @@
 <rect x="90" y="930" width="430" height="58" fill="#7a4a00"/>
 <text x="305.0" y="950" text-anchor="middle" font-size="14" font-style="italic" fill="#fff">«Model»</text>
 <text x="305.0" y="975" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">StudentPOSnapshot</text>
-<text x="102" y="1008" font-size="15.5" fill="#111">score: Decimal  [0..1]  (None = veri yok)</text>
+<text x="102" y="1008" font-size="15.5" fill="#111">score: Decimal  [0..1]  (None = no data)</text>
 <text x="102" y="1035" font-size="15.5" fill="#111">calculated_at: datetime</text>
 <rect x="630" y="900" width="430" height="255" fill="#f0f9f1" stroke="#1d5a2b" stroke-width="2"/>
 <rect x="630" y="900" width="430" height="58" fill="#1d5a2b"/>
@@ -125,5 +125,5 @@
 <text x="1182" y="1035" font-size="15.5" fill="#111" xml:space="preserve">  StudentGrade</text>
 <text x="1182" y="1062" font-size="15.5" fill="#111" xml:space="preserve">  Assessment_LO_Mapping</text>
 <text x="1182" y="1089" font-size="15.5" fill="#111" xml:space="preserve">  LO_PO_Mapping</text>
-<text x="90" y="1240" font-size="17" fill="#111">Düz ok: ilişki (ForeignKey), <tspan font-weight="bold" fill="#a61b1b">*</tspan> → <tspan font-weight="bold" fill="#a61b1b">1</tspan>.  Kesikli ok: bağımlılık.  signals, kayıt değişince servisi çağırır; servis kaynak tabloları okur, snapshot'ı yazar.</text>
+<text x="90" y="1240" font-size="17" fill="#111">Solid arrow: association (ForeignKey), <tspan font-weight="bold" fill="#a61b1b">*</tspan> → <tspan font-weight="bold" fill="#a61b1b">1</tspan>.  Dashed arrow: dependency.  signals call the service when a record changes; the service reads the source tables and writes the snapshot.</text>
 </svg>

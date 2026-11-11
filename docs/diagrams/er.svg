@@ -21,9 +21,9 @@
 <text x="136" y="144" font-size="15.5" fill="#111">id</text>
 <text x="100" y="172" font-size="15" font-weight="bold" fill="#6b3fa0">UQ</text>
 <text x="136" y="172" font-size="15.5" fill="#111">username</text>
-<text x="136" y="200" font-size="15.5" fill="#111">role  (4 değer: ADMIN … STUDENT)</text>
+<text x="136" y="200" font-size="15.5" fill="#111">role  (4 values: ADMIN … STUDENT)</text>
 <text x="100" y="228" font-size="15" font-weight="bold" fill="#6b3fa0">UQ</text>
-<text x="136" y="228" font-size="15.5" fill="#111">student_number  (NULL olabilir)</text>
+<text x="136" y="228" font-size="15.5" fill="#111">student_number  (nullable)</text>
 <text x="136" y="256" font-size="15.5" fill="#111">first_name, last_name, email, password</text>
 <text x="100" y="284" font-size="15" font-weight="bold" fill="#555">IX</text>
 <text x="136" y="284" font-size="15.5" fill="#111">(role)</text>
@@ -37,7 +37,7 @@
 <text x="676" y="200" font-size="15.5" fill="#111">title</text>
 <text x="676" y="228" font-size="15.5" fill="#111">term</text>
 <text x="640" y="256" font-size="15" font-weight="bold" fill="#1d5a2b">FK</text>
-<text x="676" y="256" font-size="15.5" fill="#111">instructor_id → User  (NULL olabilir)</text>
+<text x="676" y="256" font-size="15.5" fill="#111">instructor_id → User  (nullable)</text>
 <rect x="1170" y="80" width="430" height="190" rx="6" fill="#f6f9ff" stroke="#1d3f7a" stroke-width="2"/>
 <path d="M1170 122V86a6 6 0 0 1 6-6H1594a6 6 0 0 1 6 6V122z" fill="#1d3f7a"/>
 <text x="1385.0" y="108" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">LearningOutcome</text>
@@ -135,13 +135,13 @@
 <text x="136" y="1042" font-size="15.5" fill="#111">student_id → User</text>
 <text x="100" y="1070" font-size="15" font-weight="bold" fill="#1d5a2b">FK</text>
 <text x="136" y="1070" font-size="15.5" fill="#111">program_outcome_id → ProgramOutcome</text>
-<text x="136" y="1098" font-size="15.5" fill="#111">score  decimal(5,2), NULL = veri yok</text>
+<text x="136" y="1098" font-size="15.5" fill="#111">score  decimal(5,2), NULL = no data</text>
 <text x="136" y="1126" font-size="15.5" fill="#111">calculated_at</text>
 <text x="100" y="1154" font-size="15" font-weight="bold" fill="#6b3fa0">UQ</text>
 <text x="136" y="1154" font-size="15.5" fill="#111">(student_id, program_outcome_id)</text>
 <text x="100" y="1182" font-size="15" font-weight="bold" fill="#555">IX</text>
 <text x="136" y="1182" font-size="15.5" fill="#111">(program_outcome_id, score)</text>
 <rect x="630" y="1120" width="970" height="80" rx="6" fill="#fafafa" stroke="#999" stroke-width="1.5"/>
-<text x="646" y="1150" font-size="17" fill="#111"><tspan font-weight="bold" fill="#a61b1b">PK</tspan> birincil anahtar   <tspan font-weight="bold" fill="#1d5a2b">FK</tspan> yabancı anahtar   <tspan font-weight="bold" fill="#6b3fa0">UQ</tspan> unique kısıt   <tspan font-weight="bold" fill="#555">IX</tspan> ek bileşik index</text>
-<text x="646" y="1180" font-size="17" fill="#111">Ok: FK tablosu → başvurulan tablo (N → 1).  Turuncu tablo: ön hesaplanmış PO profili.</text>
+<text x="646" y="1150" font-size="17" fill="#111"><tspan font-weight="bold" fill="#a61b1b">PK</tspan> primary key   <tspan font-weight="bold" fill="#1d5a2b">FK</tspan> foreign key   <tspan font-weight="bold" fill="#6b3fa0">UQ</tspan> unique constraint   <tspan font-weight="bold" fill="#555">IX</tspan> extra composite index</text>
+<text x="646" y="1180" font-size="17" fill="#111">Arrow: FK table → referenced table (N → 1).  Orange table: precomputed PO profile.</text>
 </svg>
