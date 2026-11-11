@@ -2,7 +2,8 @@
 Rapor bölümlerini (sections/*.md) birleştirir; .docx ve .pdf üretir.
 
     pip install python-docx markdown
-    python docs/report/build_report.py
+    python docs/report/build_report.py            # ayrıntılı CSE 321 raporu (sections/)
+    python docs/report/build_report.py --short    # 3 sayfalık CSE 311 + CSE 321 raporu (short/)
 
 PDF için Google Chrome (headless) kullanılır. Diyagramlar okunabilirlik için
 yatay (landscape) sayfalara yerleştirilir.
@@ -22,8 +23,9 @@ from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor
 
 HERE = Path(__file__).resolve().parent
-SECTIONS = sorted((HERE / "sections").glob("*.md"))
-NAME = "CSE321_Waffle_5.1_Report"
+SHORT = "--short" in sys.argv   # hocanın istediği basılı sürüm: en fazla 3 sayfa, şekiller dik sayfada
+SECTIONS = sorted((HERE / ("short" if SHORT else "sections")).glob("*.md"))
+NAME = "CSE311_CSE321_Waffle_5.1_Short_Report" if SHORT else "CSE321_Waffle_5.1_Report"
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 CSS = """
@@ -45,6 +47,24 @@ figure { page: land; break-before: page; break-after: page; margin: 0; text-alig
 figure img { max-width: 100%; max-height: 17.6cm; }
 figcaption { font-size: 11pt; font-weight: bold; margin-top: 5pt; }
 """
+
+
+SHORT_CSS = """
+@page { size: A4; margin: 1.3cm 1.5cm; }
+body { font-size: 9.5pt; line-height: 1.3; }
+h1 { font-size: 16pt; margin: 0 0 3pt; }
+h2 { font-size: 12.5pt; margin: 9pt 0 4pt; }
+p { margin: 0 0 5pt; }
+table { font-size: 8.5pt; margin: 3pt 0 6pt; }
+th, td { padding: 1.5pt 4pt; }
+code { font-size: 8.5pt; }
+.pagebreak { break-after: page; }
+figure { page: auto; break-before: auto; break-after: auto; margin: 0 0 8pt; }
+figure img { max-height: 13.4cm; }
+figcaption { font-size: 10pt; margin-top: 2pt; }
+"""
+if SHORT:
+    CSS += SHORT_CSS
 
 
 def to_html() -> str:
@@ -118,14 +138,16 @@ class DocxBuilder(HTMLParser):
             self.row = []
         elif tag in ("th", "td"):
             self.cell = []
-        elif tag == "figure":
+        elif tag == "div" and a.get("class") == "pagebreak":
+            self.doc.add_page_break()
+        elif tag == "figure" and not SHORT:
             self.orient(True)
         elif tag == "img":
             self.figure_src = a["src"]
         elif tag == "figcaption":
             p = self.doc.add_paragraph()
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            p.add_run().add_picture(str(HERE.parent / self.figure_src), height=Cm(16.8))
+            p.add_run().add_picture(str(HERE.parent / self.figure_src), height=Cm(11.3 if SHORT else 16.8))
             self.par = self.doc.add_paragraph()
             self.par.alignment = WD_ALIGN_PARAGRAPH.CENTER
             self.styles.append("b")
@@ -144,7 +166,7 @@ class DocxBuilder(HTMLParser):
             self.flush_table()
         elif tag == "figcaption":
             self.styles.pop()
-        elif tag == "figure":
+        elif tag == "figure" and not SHORT:
             self.orient(False)
 
     def handle_data(self, data):
@@ -167,7 +189,7 @@ class DocxBuilder(HTMLParser):
                 par = table.cell(i, j).paragraphs[0]
                 for text, styles in cell:
                     r = par.add_run(text)
-                    r.font.size = Pt(9.5)
+                    r.font.size = Pt(8.5 if SHORT else 9.5)
                     r.bold = True if (i == 0 or "b" in styles) else None
                     if "code" in styles:
                         r.font.name = "Menlo"
@@ -176,7 +198,8 @@ class DocxBuilder(HTMLParser):
                     shade = OxmlElement("w:shd")
                     shade.set(qn("w:val"), "clear"); shade.set(qn("w:fill"), "E6ECF7")
                     table.cell(i, j)._tc.get_or_add_tcPr().append(shade)
-        self.doc.add_paragraph()
+        if not SHORT:
+            self.doc.add_paragraph()
         self.table_rows = None
 
 
@@ -184,10 +207,13 @@ def build_docx(body: str, out: Path):
     doc = Document()
     s = doc.sections[0]
     s.page_width, s.page_height = Cm(21), Cm(29.7)
-    s.left_margin = s.right_margin = s.top_margin = s.bottom_margin = Cm(2)
+    s.left_margin = s.right_margin = Cm(1.5 if SHORT else 2)
+    s.top_margin = s.bottom_margin = Cm(1.3 if SHORT else 2)
     normal = doc.styles["Normal"]
-    normal.font.name, normal.font.size = "Helvetica", Pt(11)
-    for level, size in ((1, 19), (2, 15), (3, 12)):
+    normal.font.name, normal.font.size = "Helvetica", Pt(9.5 if SHORT else 11)
+    if SHORT:
+        normal.paragraph_format.space_after = Pt(4)
+    for level, size in ((1, 16), (2, 12.5), (3, 11)) if SHORT else ((1, 19), (2, 15), (3, 12)):
         st = doc.styles[f"Heading {level}"]
         st.font.name, st.font.size, st.font.bold = "Helvetica", Pt(size), True
         st.font.color.rgb = RGBColor(0x1D, 0x3F, 0x7A) if level == 2 else RGBColor(0x11, 0x11, 0x11)
