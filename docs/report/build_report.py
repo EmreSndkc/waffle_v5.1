@@ -223,7 +223,7 @@ def build_docx(body: str, out: Path):
 
 def build_pdf(body: str, out: Path):
     html = HERE / "_report.html"
-    html.write_text(f'<!doctype html><html lang="tr"><meta charset="utf-8"><base href="{HERE.parent.as_uri()}/"><style>{CSS}</style><body>{body}</body></html>', encoding="utf-8")
+    html.write_text(f'<!doctype html><html lang="{"en" if SHORT else "tr"}"><meta charset="utf-8"><base href="{HERE.parent.as_uri()}/"><style>{CSS}</style><body>{body}</body></html>', encoding="utf-8")
     subprocess.run([CHROME, "--headless", "--disable-gpu", "--no-pdf-header-footer",
                     f"--print-to-pdf={out}", html.as_uri()], check=True, capture_output=True)
     html.unlink()
