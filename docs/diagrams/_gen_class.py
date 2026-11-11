@@ -1,12 +1,12 @@
 """Class diyagramını (class.svg) üretir:  python docs/diagrams/_gen_class.py"""
 from pathlib import Path
 
-W, RH, HH = 400, 27, 42
+W, RH, HH = 430, 27, 42
 FS = 15
-C1, C2, C3 = 90, 600, 1110
+C1, C2, C3 = 90, 630, 1170
 # ad: (x, y, stereotype, alanlar, metotlar)
 T = {
-    "User": (C1, 80, "AbstractUser", ["role: Role  (ADMIN, DEPT_HEAD, INSTRUCTOR, STUDENT)", "student_number: str  [0..1]", "username, first_name, last_name, email"], []),
+    "User": (C1, 80, "AbstractUser", ["role: ADMIN | DEPT_HEAD | INSTRUCTOR | STUDENT", "student_number: str  [0..1]", "username, first_name, last_name, email"], []),
     "Course": (C2, 80, "Model", ["code: str  {unique}", "title: str", "term: str"], []),
     "LearningOutcome": (C3, 80, "Model", ["code: str", "description: text"], []),
     "Enrollment": (C1, 360, "Model", ["enrolled_at: datetime"], []),
@@ -46,16 +46,16 @@ A = [
     ([(C2, 130), (C1 + W, 130)], "*", "0..1", "instructor"),
     ([(C3, 130), (C2 + W, 130)], "*", "1", ""),
     ([(C1 + 200, 360), (C1 + 200, bot("User"))], "*", "1", "student"),
-    ([(C1 + W, 400), (545, 400), (545, 170), (C2, 170)], "*", "1", ""),
+    ([(C1 + W, 400), (575, 400), (575, 170), (C2, 170)], "*", "1", ""),
     ([(C2 + 200, 360), (C2 + 200, bot("Course"))], "*", "1", ""),
     ([(C3 + 200, 360), (C3 + 200, bot("LearningOutcome"))], "*", "1", ""),
     ([(C3 + 200, bot("LO_PO_Mapping")), (C3 + 200, 640)], "*", "1", ""),
     ([(C2 + 200, 640), (C2 + 200, bot("Assessment"))], "*", "1", ""),
-    ([(C2 + W, 690), (1055, 690), (1055, 170), (C3, 170)], "*", "1", ""),
+    ([(C2 + W, 690), (1115, 690), (1115, 170), (C3, 170)], "*", "1", ""),
     ([(C1, 700), (55, 700), (55, 170), (C1, 170)], "*", "1", "student"),
-    ([(C1 + W, 700), (545, 700), (545, 440), (C2, 440)], "*", "1", ""),
+    ([(C1 + W, 700), (575, 700), (575, 440), (C2, 440)], "*", "1", ""),
     ([(C1, 1000), (25, 1000), (25, 140), (C1, 140)], "*", "1", "student"),
-    ([(C1 + 200, bot("StudentPOSnapshot")), (C1 + 200, 1190), (1545, 1190), (1545, 700), (C3 + W, 700)], "*", "1", ""),
+    ([(C1 + 200, bot("StudentPOSnapshot")), (C1 + 200, 1190), (1635, 1190), (1635, 700), (C3 + W, 700)], "*", "1", ""),
 ]
 # Bağımlılıklar (kesikli): (noktalar, etiket)
 D = [
@@ -64,10 +64,9 @@ D = [
     ([(C2 + 200, 900), (C2 + 200, bot("Assessment_LO_Mapping"))], "«okur»"),
 ]
 
-o = ['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1580 1280" font-family="Helvetica, Arial, sans-serif">',
+o = ['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 60 1670 1220" font-family="Helvetica, Arial, sans-serif">',
      '<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0L10 5L0 10" fill="none" stroke="#333" stroke-width="1.5"/></marker></defs>',
-     '<rect width="1580" height="1280" fill="#fff"/>',
-     '<text x="790" y="42" text-anchor="middle" font-size="28" font-weight="bold" fill="#111">Waffle 5.1 — Class Diyagramı</text>']
+     '<rect width="1670" height="1280" fill="#fff"/>',]
 for pts, child, parent, name in A:
     o.append(f'<polyline points="{" ".join(f"{x},{y}" for x, y in pts)}" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>')
     (x0, y0), (x1, y1) = pts[0], pts[1]
