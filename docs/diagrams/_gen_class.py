@@ -15,7 +15,7 @@ T = {
     "StudentGrade": (C1, 640, "Model", ["score: Decimal  {0..100}", "updated_at: datetime"], []),
     "Assessment_LO_Mapping": (C2, 640, "Model", ["weight: Decimal  {> 0}"], []),
     "ProgramOutcome": (C3, 640, "Model", ["code: str  {unique, PO1..PO11}", "title: str", "description: text"], []),
-    "StudentPOSnapshot": (C1, 930, "Model", ["score: Decimal  [0..1]  (None = veri yok)", "calculated_at: datetime"], []),
+    "StudentPOSnapshot": (C1, 930, "Model", ["score: Decimal  [0..1]  (None = no data)", "calculated_at: datetime"], []),
     "POCalculatorService": (C2, 900, "service", [], [
         "+ calculate_lo_scores(student): dict",
         "+ calculate_po_scores(lo_scores): dict",
@@ -59,9 +59,9 @@ A = [
 ]
 # Bağımlılıklar (kesikli): (noktalar, etiket)
 D = [
-    ([(C3, 990), (C2 + W, 990)], "«çağırır»"),
-    ([(C2, 990), (C1 + W, 990)], "«yazar»"),
-    ([(C2 + 200, 900), (C2 + 200, bot("Assessment_LO_Mapping"))], "«okur»"),
+    ([(C3, 990), (C2 + W, 990)], "«calls»"),
+    ([(C2, 990), (C1 + W, 990)], "«writes»"),
+    ([(C2 + 200, 900), (C2 + 200, bot("Assessment_LO_Mapping"))], "«reads»"),
 ]
 
 o = ['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 60 1670 1220" font-family="Helvetica, Arial, sans-serif">',
@@ -100,6 +100,6 @@ for name, (x, y, st, attrs, methods) in T.items():
     for m in methods:
         o.append(f'<text x="{x+12}" y="{ty}" font-size="15.5" fill="#111" xml:space="preserve">{m}</text>')
         ty += RH
-o.append('<text x="90" y="1240" font-size="17" fill="#111">Düz ok: ilişki (ForeignKey), <tspan font-weight="bold" fill="#a61b1b">*</tspan> → <tspan font-weight="bold" fill="#a61b1b">1</tspan>.  Kesikli ok: bağımlılık.  signals, kayıt değişince servisi çağırır; servis kaynak tabloları okur, snapshot\'ı yazar.</text>')
+o.append('<text x="90" y="1240" font-size="17" fill="#111">Solid arrow: association (ForeignKey), <tspan font-weight="bold" fill="#a61b1b">*</tspan> → <tspan font-weight="bold" fill="#a61b1b">1</tspan>.  Dashed arrow: dependency.  signals call the service when a record changes; the service reads the source tables and writes the snapshot.</text>')
 o.append("</svg>")
 Path(__file__).with_name("class.svg").write_text("\n".join(o), encoding="utf-8")

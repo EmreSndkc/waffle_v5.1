@@ -1,69 +1,69 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1555 900" font-family="Helvetica, Arial, sans-serif">
 <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#333"/></marker></defs>
 <rect width="1555" height="900" fill="#fff"/>
-<text x="777.5" y="42" text-anchor="middle" font-size="28" font-weight="bold" fill="#111">Waffle 5.1 — Roller: Kim Neyi Girer, Kim Neyi Görür</text>
+<text x="777.5" y="42" text-anchor="middle" font-size="28" font-weight="bold" fill="#111">Waffle 5.1 — Roles: Who Enters What, Who Sees What</text>
 <rect x="30" y="70" width="355" height="800" rx="12" fill="#eef1f4" stroke="#4a5866" stroke-width="2.5"/>
 <text x="207.5" y="108" text-anchor="middle" font-size="24" font-weight="bold" fill="#4a5866">Admin</text>
-<text x="207.5" y="134" text-anchor="middle" font-size="16" fill="#333">Sistem Yöneticisi</text>
+<text x="207.5" y="134" text-anchor="middle" font-size="16" fill="#333">System Administrator</text>
 <rect x="45" y="155" width="325" height="215" rx="8" fill="#fff" stroke="#4a5866" stroke-width="1.8"/>
-<text x="59" y="185" font-size="17" font-weight="bold" fill="#4a5866">GİRER</text>
-<text x="59" y="217" font-size="17.5" fill="#111">• Kullanıcı hesapları</text>
-<text x="59" y="247" font-size="17.5" fill="#111">• Roller ve yetki grupları</text>
+<text x="59" y="185" font-size="17" font-weight="bold" fill="#4a5866">ENTERS</text>
+<text x="59" y="217" font-size="17.5" fill="#111">• User accounts</text>
+<text x="59" y="247" font-size="17.5" fill="#111">• Roles and permission groups</text>
 <rect x="45" y="630" width="325" height="220" rx="8" fill="#fff" stroke="#4a5866" stroke-width="1.8"/>
-<text x="59" y="660" font-size="17" font-weight="bold" fill="#4a5866">GÖRÜR</text>
-<text x="59" y="692" font-size="17.5" fill="#111">• Tüm kayıtlar (Django admin)</text>
+<text x="59" y="660" font-size="17" font-weight="bold" fill="#4a5866">SEES</text>
+<text x="59" y="692" font-size="17.5" fill="#111">• All records (Django admin)</text>
 <line x1="207.5" y1="370" x2="207.5" y2="428" stroke="#333" stroke-width="2.2" marker-end="url(#a)"/>
 <line x1="207.5" y1="570" x2="207.5" y2="628" stroke="#333" stroke-width="2.2" marker-end="url(#a)"/>
 <line x1="370" y1="262" x2="423" y2="262" stroke="#333" stroke-width="2.2" marker-end="url(#a)"/>
 <rect x="410" y="70" width="355" height="800" rx="12" fill="#fff5e6" stroke="#7a4a00" stroke-width="2.5"/>
-<text x="587.5" y="108" text-anchor="middle" font-size="24" font-weight="bold" fill="#7a4a00">Bölüm Başkanı</text>
+<text x="587.5" y="108" text-anchor="middle" font-size="24" font-weight="bold" fill="#7a4a00">Department Head</text>
 <text x="587.5" y="134" text-anchor="middle" font-size="16" fill="#333">DEPT_HEAD</text>
 <rect x="425" y="155" width="325" height="215" rx="8" fill="#fff" stroke="#7a4a00" stroke-width="1.8"/>
-<text x="439" y="185" font-size="17" font-weight="bold" fill="#7a4a00">GİRER</text>
-<text x="439" y="217" font-size="17.5" fill="#111">• 11 Program Çıktısı (PO)</text>
-<text x="439" y="247" font-size="17.5" fill="#111">• Dersler ve dönem</text>
-<text x="439" y="277" font-size="17.5" fill="#111">• Derse hoca atama</text>
-<text x="439" y="307" font-size="17.5" fill="#111">• Öğrenci–ders kaydı</text>
+<text x="439" y="185" font-size="17" font-weight="bold" fill="#7a4a00">ENTERS</text>
+<text x="439" y="217" font-size="17.5" fill="#111">• 11 Program Outcomes (PO)</text>
+<text x="439" y="247" font-size="17.5" fill="#111">• Courses and term</text>
+<text x="439" y="277" font-size="17.5" fill="#111">• Instructor assignment</text>
+<text x="439" y="307" font-size="17.5" fill="#111">• Student enrollment</text>
 <rect x="425" y="630" width="325" height="220" rx="8" fill="#fff" stroke="#7a4a00" stroke-width="1.8"/>
-<text x="439" y="660" font-size="17" font-weight="bold" fill="#7a4a00">GÖRÜR</text>
-<text x="439" y="692" font-size="17.5" fill="#111">• Tüm derslerin LO ve eşlemeleri</text>
-<text x="439" y="722" font-size="17.5" fill="#111">• Tüm öğrencilerin PO puanları</text>
-<text x="439" y="752" font-size="17.5" fill="#111">• PO bazında bölüm ortalaması</text>
+<text x="439" y="660" font-size="17" font-weight="bold" fill="#7a4a00">SEES</text>
+<text x="439" y="692" font-size="17.5" fill="#111">• LOs and mappings of all courses</text>
+<text x="439" y="722" font-size="17.5" fill="#111">• PO scores of all students</text>
+<text x="439" y="752" font-size="17.5" fill="#111">• Department average per PO</text>
 <line x1="587.5" y1="370" x2="587.5" y2="428" stroke="#333" stroke-width="2.2" marker-end="url(#a)"/>
 <line x1="587.5" y1="570" x2="587.5" y2="628" stroke="#333" stroke-width="2.2" marker-end="url(#a)"/>
 <line x1="750" y1="262" x2="803" y2="262" stroke="#333" stroke-width="2.2" marker-end="url(#a)"/>
 <rect x="790" y="70" width="355" height="800" rx="12" fill="#f0f9f1" stroke="#1d5a2b" stroke-width="2.5"/>
-<text x="967.5" y="108" text-anchor="middle" font-size="24" font-weight="bold" fill="#1d5a2b">Öğretim Üyesi</text>
+<text x="967.5" y="108" text-anchor="middle" font-size="24" font-weight="bold" fill="#1d5a2b">Instructor</text>
 <text x="967.5" y="134" text-anchor="middle" font-size="16" fill="#333">INSTRUCTOR</text>
 <rect x="805" y="155" width="325" height="215" rx="8" fill="#fff" stroke="#1d5a2b" stroke-width="1.8"/>
-<text x="819" y="185" font-size="17" font-weight="bold" fill="#1d5a2b">GİRER</text>
-<text x="819" y="217" font-size="17.5" fill="#111">• Dersin LO'ları</text>
-<text x="819" y="247" font-size="17.5" fill="#111">• Değerlendirmeler (Midterm…)</text>
-<text x="819" y="277" font-size="17.5" fill="#111">• Değerlendirme → LO yüzdeleri</text>
-<text x="819" y="307" font-size="17.5" fill="#111">• LO → PO ağırlıkları (1–5)</text>
-<text x="819" y="337" font-size="17.5" fill="#111">• Öğrenci notları</text>
+<text x="819" y="185" font-size="17" font-weight="bold" fill="#1d5a2b">ENTERS</text>
+<text x="819" y="217" font-size="17.5" fill="#111">• Course LOs</text>
+<text x="819" y="247" font-size="17.5" fill="#111">• Assessments (Midterm…)</text>
+<text x="819" y="277" font-size="17.5" fill="#111">• Assessment → LO percentages</text>
+<text x="819" y="307" font-size="17.5" fill="#111">• LO → PO weights (1–5)</text>
+<text x="819" y="337" font-size="17.5" fill="#111">• Student grades</text>
 <rect x="805" y="630" width="325" height="220" rx="8" fill="#fff" stroke="#1d5a2b" stroke-width="1.8"/>
-<text x="819" y="660" font-size="17" font-weight="bold" fill="#1d5a2b">GÖRÜR</text>
-<text x="819" y="692" font-size="17.5" fill="#111">• Dersleri ve öğrenci listeleri</text>
-<text x="819" y="722" font-size="17.5" fill="#111">• Girilen notlar</text>
-<text x="819" y="752" font-size="17.5" fill="#111">• Öğrencilerin PO puanları</text>
+<text x="819" y="660" font-size="17" font-weight="bold" fill="#1d5a2b">SEES</text>
+<text x="819" y="692" font-size="17.5" fill="#111">• Courses and student lists</text>
+<text x="819" y="722" font-size="17.5" fill="#111">• Entered grades</text>
+<text x="819" y="752" font-size="17.5" fill="#111">• Students' PO scores</text>
 <line x1="967.5" y1="370" x2="967.5" y2="428" stroke="#333" stroke-width="2.2" marker-end="url(#a)"/>
 <line x1="967.5" y1="570" x2="967.5" y2="628" stroke="#333" stroke-width="2.2" marker-end="url(#a)"/>
 <rect x="1170" y="70" width="355" height="800" rx="12" fill="#eef4ff" stroke="#1d3f7a" stroke-width="2.5"/>
-<text x="1347.5" y="108" text-anchor="middle" font-size="24" font-weight="bold" fill="#1d3f7a">Öğrenci</text>
+<text x="1347.5" y="108" text-anchor="middle" font-size="24" font-weight="bold" fill="#1d3f7a">Student</text>
 <text x="1347.5" y="134" text-anchor="middle" font-size="16" fill="#333">STUDENT</text>
 <rect x="1185" y="155" width="325" height="215" rx="8" fill="#fff" stroke="#1d3f7a" stroke-width="1.8"/>
-<text x="1199" y="185" font-size="17" font-weight="bold" fill="#1d3f7a">GİRER</text>
-<text x="1199" y="217" font-size="17.5" fill="#111">— (veri girmez)</text>
+<text x="1199" y="185" font-size="17" font-weight="bold" fill="#1d3f7a">ENTERS</text>
+<text x="1199" y="217" font-size="17.5" fill="#111">— (enters no data)</text>
 <rect x="1185" y="630" width="325" height="220" rx="8" fill="#fff" stroke="#1d3f7a" stroke-width="1.8"/>
-<text x="1199" y="660" font-size="17" font-weight="bold" fill="#1d3f7a">GÖRÜR</text>
-<text x="1199" y="692" font-size="17.5" fill="#111">• Kendi notları</text>
-<text x="1199" y="722" font-size="17.5" fill="#111">• Kendi 11 PO profili</text>
-<text x="1199" y="752" font-size="17.5" fill="#111">• Verisi olmayan PO: “veri yok”</text>
-<text x="1199" y="782" font-size="17.5" fill="#111">(öğrenci paneli: sonraki sprint)</text>
+<text x="1199" y="660" font-size="17" font-weight="bold" fill="#1d3f7a">SEES</text>
+<text x="1199" y="692" font-size="17.5" fill="#111">• Own grades</text>
+<text x="1199" y="722" font-size="17.5" fill="#111">• Own 11-PO profile</text>
+<text x="1199" y="752" font-size="17.5" fill="#111">• PO without data: “no data”</text>
+<text x="1199" y="782" font-size="17.5" fill="#111">(student dashboard: next sprint)</text>
 <line x1="1347.5" y1="570" x2="1347.5" y2="628" stroke="#333" stroke-width="2.2" marker-end="url(#a)"/>
 <rect x="45" y="430" width="1465" height="140" rx="10" fill="#fff" stroke="#a61b1b" stroke-width="2.5"/>
-<text x="777.5" y="468" text-anchor="middle" font-size="22" font-weight="bold" fill="#a61b1b">Sistem — otomatik yeniden hesaplama</text>
-<text x="777.5" y="503" text-anchor="middle" font-size="18" fill="#111">Not, eşleme ya da ağırlık değişince signals → POCalculatorService yalnızca etkilenen öğrencileri yeniden hesaplar</text>
-<text x="777.5" y="535" text-anchor="middle" font-size="18" fill="#111">Not → LO → PO:  puan = Σ(ağırlık × puan) ÷ Σ ağırlık   →   StudentPOSnapshot (öğrenci × PO; veri yoksa NULL)</text>
+<text x="777.5" y="468" text-anchor="middle" font-size="22" font-weight="bold" fill="#a61b1b">System — automatic recalculation</text>
+<text x="777.5" y="503" text-anchor="middle" font-size="18" fill="#111">When a grade, mapping or weight changes, signals → POCalculatorService recalculates only the affected students</text>
+<text x="777.5" y="535" text-anchor="middle" font-size="18" fill="#111">Grade → LO → PO:  score = Σ(weight × score) ÷ Σ weight   →   StudentPOSnapshot (student × PO; NULL if no data)</text>
 </svg>
